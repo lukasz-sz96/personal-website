@@ -1,4 +1,8 @@
-
+import { Bento } from "@/components/bento";
 export default function Page() {
-    return <div>Hello World</div>;
+    return (
+        <div>
+            <Bento />
+        </div>
+    );
 }

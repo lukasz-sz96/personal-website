@@ -45,6 +45,37 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
+
+  --color-warm-50: #fdfcfb;
+  --color-warm-100: #f5f3f0;
+  --color-warm-200: #e8e4de;
+  --color-warm-300: #d4cdc3;
+  --color-warm-400: #b8ad9e;
+  --color-warm-500: #9c8e7c;
+  --color-warm-600: #7d6e5c;
+  --color-warm-700: #5c5147;
+  --color-warm-800: #3d3632;
+  --color-warm-900: #1f1b19;
+
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d9488;
+
+  --color-coral: 255 160 130;
+
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-glass-hover: 0 8px 32px rgba(0, 0, 0, 0.18);
 }
 
 :root {
@@ -120,7 +151,25 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .glow-coral {
+    --glow-color: var(--color-coral);
+    border-color: rgb(var(--glow-color) / 0.35);
+    box-shadow:
+      0 0 20px rgb(var(--glow-color) / 0.3),
+      0 0 40px rgb(var(--glow-color) / 0.15);
+  }
+
+  .glow-coral:hover {
+    border-color: rgb(var(--glow-color) / 0.5);
+    box-shadow:
+      0 0 30px rgb(var(--glow-color) / 0.4),
+      0 0 60px rgb(var(--glow-color) / 0.2);
   }
 }
