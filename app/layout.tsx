@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { Background } from "@/components/background";
 import { PageWrapper } from "@/components/PageWrapper";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -27,12 +29,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Background />
-        <PageWrapper>{children}</PageWrapper>
+        <ThemeProvider>
+          <Background />
+          <PageWrapper>{children}</PageWrapper>
+          <ThemeToggle />
+        </ThemeProvider>
       </body>
     </html>
   );
