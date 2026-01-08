@@ -8,7 +8,7 @@ import { BottomSection } from "./sections/bottom-section"
 
 export const Bento = () => {
     return (
-        <div className="w-full max-w-6xl p-4 md:p-6">
+        <div className="w-full p-4 md:p-6">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <HeroCard />
                 <StatusCard />

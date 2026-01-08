@@ -1,7 +1,8 @@
-import { Bento } from "@/components/bento";
+import { Bento } from "@/components/features/bento";
+
 export default function Page() {
     return (
-        <div>
+        <div className="w-full">
             <Bento />
         </div>
     );

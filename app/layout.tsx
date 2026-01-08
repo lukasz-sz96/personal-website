@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { Background } from "@/components/background";
-import { PageWrapper } from "@/components/PageWrapper";
-import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { Background, PageWrapper } from "@/components/layout";
+import { ThemeProvider } from "@/components/providers";
+import { ThemeToggle } from "@/components/common";
+import { MenuBar } from "@/components/features/menu-bar";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -35,7 +35,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Background />
-          <PageWrapper>{children}</PageWrapper>
+          <PageWrapper><MenuBar />{children}</PageWrapper>
           <ThemeToggle />
         </ThemeProvider>
       </body>
