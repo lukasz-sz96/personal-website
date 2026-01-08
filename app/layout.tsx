@@ -5,6 +5,8 @@ import { Background, PageWrapper } from "@/components/layout";
 import { ThemeProvider } from "@/components/providers";
 import { ThemeToggle } from "@/components/common";
 import { MenuBar } from "@/components/features/menu-bar";
+import { Avatar } from "@/components/ui/avatar";
+import { TopBar } from "@/components/layout/TopBar";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -35,7 +37,10 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Background />
-          <PageWrapper><MenuBar />{children}</PageWrapper>
+          <PageWrapper>
+            <TopBar avatarTitle="Ł" avatarText="lukasz.dev" />
+            {children}
+          </PageWrapper>
           <ThemeToggle />
         </ThemeProvider>
       </body>
