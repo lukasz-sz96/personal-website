@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { ViewTransitions } from "next-view-transitions";
 import "./globals.css";
 import { Background, PageWrapper } from "@/components/layout";
-import { ThemeProvider } from "@/components/providers";
+import { ThemeProvider, LenisProvider } from "@/components/providers";
 import { ThemeToggle } from "@/components/common";
 import { MenuBar } from "@/components/features/menu-bar";
 import { Avatar } from "@/components/ui/avatar";
@@ -31,19 +32,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider>
-          <Background />
-          <PageWrapper>
-            <TopBar avatarTitle="Ł" avatarText="lukasz.dev" />
-            {children}
-          </PageWrapper>
-          <ThemeToggle />
-        </ThemeProvider>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en" className={inter.variable} suppressHydrationWarning>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ThemeProvider>
+            <LenisProvider>
+              <Background />
+              <PageWrapper>
+                <TopBar avatarTitle="Ł" avatarText="lukasz.dev" />
+                <div className="w-full flex-1" style={{ viewTransitionName: "page-content" }}>
+                  {children}
+                </div>
+              </PageWrapper>
+              <ThemeToggle />
+            </LenisProvider>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
