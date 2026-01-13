@@ -1,8 +1,9 @@
 "use client"
 
-import { Link } from "next-view-transitions"
+import { Link as ViewTransitionLink } from "next-view-transitions"
+import NextLink from "next/link"
 import { usePathname } from "next/navigation"
-import { ReactNode, MouseEvent } from "react"
+import { ReactNode, MouseEvent, useEffect, useState } from "react"
 
 const NAV_ORDER = ["/", "/projects", "/about", "/contact"]
 
@@ -14,6 +15,11 @@ interface TransitionLinkProps {
 
 export function TransitionLink({ href, children, className }: TransitionLinkProps) {
   const pathname = usePathname()
+  const [isFirefox, setIsFirefox] = useState(false)
+
+  useEffect(() => {
+    setIsFirefox(navigator.userAgent.toLowerCase().includes("firefox"))
+  }, [])
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (pathname === href) {
@@ -26,9 +32,18 @@ export function TransitionLink({ href, children, className }: TransitionLinkProp
     document.documentElement.dataset.transition = direction
   }
 
+  // Use regular Next.js Link for Firefox (View Transitions are buggy with Firefox)
+  if (isFirefox) {
+    return (
+      <NextLink href={href} className={className}>
+        {children}
+      </NextLink>
+    )
+  }
+
   return (
-    <Link href={href} onClick={handleClick} className={className}>
+    <ViewTransitionLink href={href} onClick={handleClick} className={className}>
       {children}
-    </Link>
+    </ViewTransitionLink>
   )
 }
