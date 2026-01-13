@@ -1,0 +1,6 @@
+export { ProjectCard } from "./ProjectCard"
+export { FeaturedProject } from "./FeaturedProject"
+export { ProjectsHero } from "./ProjectsHero"
+export { ProjectsGrid } from "./ProjectsGrid"
+export { projects } from "./data"
+export type { Project } from "./ProjectCard"

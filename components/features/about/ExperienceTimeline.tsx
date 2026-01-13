@@ -11,33 +11,35 @@ interface Experience {
   company: string
   period: string
   description: string
+  clients?: string[]
   technologies: string[]
   status: ExperienceStatus
 }
 
 const experiences: Experience[] = [
   {
-    title: "Senior Frontend Developer",
-    company: "TechCorp Solutions",
-    period: "2022 - PRESENT",
-    description: "Leading the frontend architecture for a high-traffic SaaS platform. Spearheaded the migration to Next.js, resulting in a 40% performance boost.",
-    technologies: ["Next.js", "TypeScript", "GraphQL"],
+    title: "Frontend Developer",
+    company: "Accenture",
+    period: "2021 - PRESENT",
+    description: "Building enterprise-grade web applications for global clients. Specializing in React ecosystem, GenAI interfaces, and accessibility implementations across web, mobile, and VR platforms.",
+    clients: ["Google", "Meta", "VeloBank", "Procter & Gamble", "Lavazza"],
+    technologies: ["React", "TypeScript", "React Native", "Tailwind CSS", "Redux"],
     status: "current",
   },
   {
-    title: "Frontend Developer",
-    company: "Creative Agency Studio",
-    period: "2020 - 2022",
-    description: "Developed award-winning marketing websites and e-commerce stores. Collaborated closely with designers to implement complex GSAP animations.",
-    technologies: ["Vue.js", "GSAP", "Shopify"],
+    title: "Social Network Owner",
+    company: "Self Employed",
+    period: "2017 - 2022",
+    description: "Founded and managed an online community with 50,000+ users and a team of 20 staff members. Handled UI/UX design, frontend development, database administration, and server infrastructure.",
+    technologies: ["React.js", "REST API", "MySQL", "Node.js"],
     status: "completed",
   },
   {
-    title: "Junior Web Developer",
-    company: "Freelance & Contract",
-    period: "2019 - 2020",
-    description: "Started my career building responsive websites for local businesses. Mastered HTML, CSS, and vanilla JavaScript fundamentals.",
-    technologies: [],
+    title: "Freelance Developer",
+    company: "Self Employed",
+    period: "2019 - 2021",
+    description: "Created custom websites, JavaScript applications, and database solutions for various clients. Worked with both Windows Server and Linux environments.",
+    technologies: ["JavaScript", "MySQL", "Lua"],
     status: "past",
   },
 ]
@@ -89,6 +91,15 @@ export function ExperienceTimeline() {
                   </div>
 
                   <p className="text-sm text-gray-400 mb-3">{exp.description}</p>
+
+                  {exp.clients && exp.clients.length > 0 && (
+                    <div className="mb-3">
+                      <span className="text-xs text-gray-500 uppercase tracking-wider">Clients: </span>
+                      <span className="text-xs text-gray-300">
+                        {exp.clients.join(" · ")}
+                      </span>
+                    </div>
+                  )}
 
                   {exp.technologies.length > 0 && (
                     <div className="flex flex-wrap gap-2">
