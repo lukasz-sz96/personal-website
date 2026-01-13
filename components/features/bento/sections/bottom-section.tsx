@@ -3,7 +3,7 @@ import { LinkCard } from "../cards/link-card"
 
 export const BottomSection = () => {
     return (
-        <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <LinkCard
                 href="/projects"
                 icon={FolderOpen}

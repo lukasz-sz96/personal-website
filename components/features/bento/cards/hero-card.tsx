@@ -4,7 +4,7 @@ import { GlassCard } from "@/components/ui/glass-card"
 
 export const HeroCard = () => {
     return (
-        <GlassCard className="lg:col-span-2 lg:row-span-3 p-8 md:p-12 flex flex-col justify-between min-h-[400px] lg:min-h-[500px]">
+        <GlassCard className="h-full p-8 md:p-12 flex flex-col justify-between min-h-[400px] lg:min-h-[500px]">
             <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/20 border border-emerald-200 dark:border-emerald-500/30 mb-8">
                     <span className="relative flex h-2 w-2">

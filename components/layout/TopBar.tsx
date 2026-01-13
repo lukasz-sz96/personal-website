@@ -7,7 +7,7 @@ interface TopBarProps {
 }
 export const TopBar = ({ avatarTitle, avatarText }: TopBarProps) => {
     return (
-        <div className="flex w-full justify-between px-4 md:px-6">
+        <div className="flex w-full justify-between p-4 md:p-6">
             <Avatar title={avatarTitle} text={avatarText} />
             <MenuBar />
         </div>
