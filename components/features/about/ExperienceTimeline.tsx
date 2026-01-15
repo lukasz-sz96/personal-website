@@ -1,36 +1,44 @@
-"use client"
+"use client";
 
-import { motion } from "motion/react"
-import { GlassCard } from "@/components/ui/glass-card"
-import { Briefcase } from "lucide-react"
+import { motion } from "motion/react";
+import { GlassCard } from "@/components/ui/glass-card";
+import { Briefcase } from "lucide-react";
 
-type ExperienceStatus = "current" | "completed" | "past"
+type ExperienceStatus = "current" | "completed" | "past";
 
 interface Experience {
-  title: string
-  company: string
-  period: string
-  description: string
-  clients?: string[]
-  technologies: string[]
-  status: ExperienceStatus
+  title: string;
+  company: string;
+  period: string;
+  description: string;
+  clients?: string[];
+  technologies: string[];
+  status: ExperienceStatus;
 }
 
 const experiences: Experience[] = [
   {
     title: "Frontend Developer",
     company: "Accenture",
-    period: "2021 - PRESENT",
-    description: "Building enterprise-grade web applications for global clients. Specializing in React ecosystem, GenAI interfaces, and accessibility implementations across web, mobile, and VR platforms.",
+    period: "2021 - 2025",
+    description:
+      "Building enterprise-grade web applications for global clients. Specializing in React ecosystem, GenAI interfaces, and accessibility implementations across web, mobile, and VR platforms.",
     clients: ["Google", "Meta", "VeloBank", "Procter & Gamble", "Lavazza"],
-    technologies: ["React", "TypeScript", "React Native", "Tailwind CSS", "Redux"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "React Native",
+      "Tailwind CSS",
+      "Redux",
+    ],
     status: "current",
   },
   {
     title: "Social Network Owner",
     company: "Self Employed",
     period: "2017 - 2022",
-    description: "Founded and managed an online community with 50,000+ users and a team of 20 staff members. Handled UI/UX design, frontend development, database administration, and server infrastructure.",
+    description:
+      "Founded and managed an online community with 50,000+ users and a team of 20 staff members. Handled UI/UX design, frontend development, database administration, and server infrastructure.",
     technologies: ["React.js", "REST API", "MySQL", "Node.js"],
     status: "completed",
   },
@@ -38,17 +46,18 @@ const experiences: Experience[] = [
     title: "Freelance Developer",
     company: "Self Employed",
     period: "2019 - 2021",
-    description: "Created custom websites, JavaScript applications, and database solutions for various clients. Worked with both Windows Server and Linux environments.",
+    description:
+      "Created custom websites, JavaScript applications, and database solutions for various clients. Worked with both Windows Server and Linux environments.",
     technologies: ["JavaScript", "MySQL", "Lua"],
     status: "past",
   },
-]
+];
 
 const statusColors: Record<ExperienceStatus, string> = {
   current: "bg-emerald-400",
   completed: "bg-rose-400",
   past: "bg-gray-500",
-}
+};
 
 export function ExperienceTimeline() {
   return (
@@ -77,24 +86,34 @@ export function ExperienceTimeline() {
                 transition={{ delay: 0.9 + i * 0.15 }}
                 className="relative pl-8"
               >
-                <div className={`absolute left-0 top-2 w-3.5 h-3.5 rounded-full ${statusColors[exp.status]} border-4 border-gray-900`} />
+                <div
+                  className={`absolute left-0 top-2 w-3.5 h-3.5 rounded-full ${
+                    statusColors[exp.status]
+                  } border-4 border-gray-900`}
+                />
 
                 <div className="p-4 rounded-xl bg-white/5 border border-white/10">
                   <div className="flex items-start justify-between mb-2">
                     <div>
                       <h3 className="font-medium text-white">{exp.title}</h3>
-                      <p className="text-sm text-pastel-orange">{exp.company}</p>
+                      <p className="text-sm text-pastel-orange">
+                        {exp.company}
+                      </p>
                     </div>
                     <span className="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded-md whitespace-nowrap">
                       {exp.period}
                     </span>
                   </div>
 
-                  <p className="text-sm text-gray-400 mb-3">{exp.description}</p>
+                  <p className="text-sm text-gray-400 mb-3">
+                    {exp.description}
+                  </p>
 
                   {exp.clients && exp.clients.length > 0 && (
                     <div className="mb-3">
-                      <span className="text-xs text-gray-500 uppercase tracking-wider">Clients: </span>
+                      <span className="text-xs text-gray-500 uppercase tracking-wider">
+                        Clients:{" "}
+                      </span>
                       <span className="text-xs text-gray-300">
                         {exp.clients.join(" · ")}
                       </span>
@@ -120,5 +139,5 @@ export function ExperienceTimeline() {
         </div>
       </motion.div>
     </GlassCard>
-  )
+  );
 }
