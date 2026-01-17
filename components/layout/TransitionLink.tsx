@@ -3,18 +3,16 @@
 import { Link as ViewTransitionLink } from "next-view-transitions"
 import NextLink from "next/link"
 import { usePathname } from "next/navigation"
-import { ReactNode, MouseEvent, useEffect, useState } from "react"
+import { ReactNode, MouseEvent, useEffect, useState, AnchorHTMLAttributes } from "react"
 
 const NAV_ORDER = ["/", "/projects", "/about", "/contact"]
 
-interface TransitionLinkProps {
+export interface TransitionLinkProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> {
   href: string
   children: ReactNode
-  className?: string
-  "aria-current"?: "page" | "step" | "location" | "date" | "time" | "true" | "false"
 }
 
-export function TransitionLink({ href, children, className, "aria-current": ariaCurrent }: TransitionLinkProps) {
+export function TransitionLink({ href, children, className, ...rest }: TransitionLinkProps) {
   const pathname = usePathname()
   const [isFirefox, setIsFirefox] = useState(false)
 
@@ -33,17 +31,16 @@ export function TransitionLink({ href, children, className, "aria-current": aria
     document.documentElement.dataset.transition = direction
   }
 
-  // Use regular Next.js Link for Firefox (View Transitions are buggy with Firefox)
   if (isFirefox) {
     return (
-      <NextLink href={href} className={className} aria-current={ariaCurrent}>
+      <NextLink href={href} className={className} {...rest}>
         {children}
       </NextLink>
     )
   }
 
   return (
-    <ViewTransitionLink href={href} onClick={handleClick} className={className} aria-current={ariaCurrent}>
+    <ViewTransitionLink href={href} onClick={handleClick} className={className} {...rest}>
       {children}
     </ViewTransitionLink>
   )
