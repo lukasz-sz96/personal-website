@@ -3,8 +3,8 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
 import "./globals.css";
 import { Background, PageWrapper } from "@/components/layout";
-import { ThemeProvider, LenisProvider } from "@/components/providers";
-import { ThemeToggle, KeyboardNav, SwipeNav, NavigationHint } from "@/components/common";
+import { LenisProvider } from "@/components/providers";
+import { KeyboardNav, SwipeNav, NavigationHint } from "@/components/common";
 import { MenuBar } from "@/components/features/menu-bar";
 import { Avatar } from "@/components/ui/avatar";
 import { TopBar } from "@/components/layout/TopBar";
@@ -33,12 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <html lang="en" className={`${inter.variable} dark`}>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <ThemeProvider>
-            <LenisProvider>
+          <LenisProvider>
               <a
                 href="#main-content"
                 className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-pastel-orange focus:text-gray-900 focus:rounded-lg focus:font-medium"
@@ -56,12 +55,10 @@ export default function RootLayout({
                   {children}
                 </main>
               </PageWrapper>
-              <ThemeToggle />
               <KeyboardNav />
               <SwipeNav />
               <NavigationHint />
             </LenisProvider>
-          </ThemeProvider>
         </body>
       </html>
     </ViewTransitions>
