@@ -19,6 +19,10 @@ export interface Project {
   featured?: boolean;
   year: string;
   category: string;
+  demoCredentials?: {
+    email: string;
+    password: string;
+  };
 }
 
 interface ProjectCardProps {
@@ -42,16 +46,15 @@ export function ProjectCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={cn(
-        "group relative",
+        "relative",
         isLarge && "md:col-span-2 md:row-span-2",
         isWide && "md:col-span-2"
       )}
     >
+      <div className="group h-full transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/20">
       <GlassCard
         className={cn(
           "relative overflow-hidden h-full",
-          "transition-all duration-500",
-          "hover:scale-[1.02] hover:-translate-y-1",
           isLarge ? "min-h-[500px]" : "min-h-[320px]"
         )}
       >
@@ -110,7 +113,7 @@ export function ProjectCard({
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-black/30 backdrop-blur-sm hover:bg-black/50 transition-colors border border-white/10"
+                  className="p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors border border-white/10"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <Github className="w-4 h-4 text-white" />
@@ -121,7 +124,7 @@ export function ProjectCard({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-black/30 backdrop-blur-sm hover:bg-black/50 transition-colors border border-white/10"
+                  className="p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors border border-white/10"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <ExternalLink className="w-4 h-4 text-white" />
@@ -159,7 +162,7 @@ export function ProjectCard({
               {project.tech.slice(0, isLarge ? 6 : 4).map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1 text-xs font-medium rounded-full bg-black/30 backdrop-blur-sm text-white/90 border border-white/10"
+                  className="px-3 py-1 text-xs font-medium rounded-full bg-black/30 text-white/90 border border-white/10"
                 >
                   {tech}
                 </span>
@@ -180,8 +183,8 @@ export function ProjectCard({
           </div>
         </div>
 
-        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none border border-white/20" />
       </GlassCard>
+      </div>
     </motion.div>
   );
 }

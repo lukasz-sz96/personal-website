@@ -6,15 +6,18 @@ interface GlassProps extends ComponentPropsWithoutRef<"div"> {
     className?: string
 }
 
-export const Glass = ({ children, className, ...props }: GlassProps) => {
+export const Glass = ({ children, className, style, ...props }: GlassProps) => {
     return (
         <div
             className={cn(
-                "backdrop-blur-xl border transition-all duration-300",
-                "bg-white/80 border-white/50",
-                "dark:bg-white/10 dark:border-white/20",
+                "relative",
+                "backdrop-blur-xl",
+                "bg-white/80 dark:bg-white/10",
+                "shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]",
+                "dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)]",
                 className
             )}
+            style={style}
             {...props}
         >
             {children}
