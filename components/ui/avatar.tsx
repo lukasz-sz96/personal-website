@@ -32,7 +32,7 @@ export const Avatar = ({ text }: AvatarProps) => {
           </text>
         </svg>
       </div>
-      <h3 className="self-center opacity-80">{text}</h3>
+      <h3 className="hidden md:block self-center opacity-80">{text}</h3>
     </div>
   );
 };

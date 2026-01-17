@@ -6,8 +6,10 @@ interface TopBarProps {
 }
 export const TopBar = ({ avatarText }: TopBarProps) => {
     return (
-        <div className="flex w-full justify-between p-4 md:p-6">
-            <Avatar text={avatarText} />
+        <div className="flex w-full justify-between items-center gap-4 p-4 md:p-6">
+            <div className="flex-shrink-0">
+                <Avatar text={avatarText} />
+            </div>
             <MenuBar />
         </div>
     )

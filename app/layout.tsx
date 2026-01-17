@@ -4,7 +4,7 @@ import { ViewTransitions } from "next-view-transitions";
 import "./globals.css";
 import { Background, PageWrapper } from "@/components/layout";
 import { ThemeProvider, LenisProvider } from "@/components/providers";
-import { ThemeToggle, KeyboardNav } from "@/components/common";
+import { ThemeToggle, KeyboardNav, SwipeNav, NavigationHint } from "@/components/common";
 import { MenuBar } from "@/components/features/menu-bar";
 import { Avatar } from "@/components/ui/avatar";
 import { TopBar } from "@/components/layout/TopBar";
@@ -58,6 +58,8 @@ export default function RootLayout({
               </PageWrapper>
               <ThemeToggle />
               <KeyboardNav />
+              <SwipeNav />
+              <NavigationHint />
             </LenisProvider>
           </ThemeProvider>
         </body>
