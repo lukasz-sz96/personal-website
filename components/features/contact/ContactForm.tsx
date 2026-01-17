@@ -54,7 +54,7 @@ export function ContactForm() {
 
   if (isSubmitted) {
     return (
-      <GlassCard className="p-8 md:p-10 bg-black/40 dark:bg-black/50 backdrop-blur-xl border-white/20">
+      <GlassCard className="p-8 md:p-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -86,7 +86,7 @@ export function ContactForm() {
   }
 
   return (
-    <GlassCard className="p-8 md:p-10 bg-black/40 dark:bg-black/50 backdrop-blur-xl border-white/20">
+    <GlassCard className="p-8 md:p-10">
       <motion.form
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -112,7 +112,7 @@ export function ContactForm() {
               className={cn(
                 "w-full px-4 py-3 rounded-xl",
                 "bg-white/10 border border-white/20",
-                "text-white placeholder:text-gray-400",
+                "text-white placeholder:text-white/50",
                 "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
                 "transition-all duration-200"
               )}
@@ -136,7 +136,7 @@ export function ContactForm() {
               className={cn(
                 "w-full px-4 py-3 rounded-xl",
                 "bg-white/10 border border-white/20",
-                "text-white placeholder:text-gray-400",
+                "text-white placeholder:text-white/50",
                 "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
                 "transition-all duration-200"
               )}
@@ -160,7 +160,7 @@ export function ContactForm() {
             className={cn(
               "w-full px-4 py-3 rounded-xl",
               "bg-white/10 border border-white/20",
-              "text-white placeholder:text-gray-400",
+              "text-white placeholder:text-white/50",
               "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
               "transition-all duration-200"
             )}
@@ -183,7 +183,7 @@ export function ContactForm() {
             className={cn(
               "w-full px-4 py-3 rounded-xl resize-none",
               "bg-white/10 border border-white/20",
-              "text-white placeholder:text-gray-400",
+              "text-white placeholder:text-white/50",
               "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
               "transition-all duration-200"
             )}

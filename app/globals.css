@@ -164,6 +164,16 @@
     @apply bg-background text-foreground;
     overflow-x: hidden;
   }
+
+  @supports (-webkit-touch-callout: none) {
+    @media (max-width: 768px) {
+      .backdrop-blur-md,
+      .backdrop-blur-xl {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+    }
+  }
 }
 
 @layer utilities {
