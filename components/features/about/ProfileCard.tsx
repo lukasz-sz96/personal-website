@@ -6,7 +6,7 @@ import { Download, Mail, MapPin, Clock, Briefcase, Globe } from "lucide-react"
 import Image from "next/image"
 
 const stats = [
-  { label: "LOCATION", value: "Warsaw, PL", icon: MapPin },
+  { label: "LOCATION", value: "Płock, PL", icon: MapPin },
   { label: "EXPERIENCE", value: "4 Years", icon: Briefcase },
   { label: "AVAILABILITY", value: "Open", status: "available", icon: Clock },
   { label: "TIMEZONE", value: "GMT+1", icon: Globe },
@@ -69,13 +69,20 @@ export function ProfileCard() {
             transition={{ delay: 0.5 }}
             className="flex gap-2 mt-4 w-full"
           >
-            <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm text-gray-300">
+            <a
+              href="/CV_EN.pdf"
+              download
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm text-gray-300"
+            >
               <Download className="w-4 h-4" />
               Resume
-            </button>
-            <button className="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+            </a>
+            <a
+              href="mailto:lukasz.szczesny96@gmail.com"
+              className="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            >
               <Mail className="w-4 h-4 text-gray-300" />
-            </button>
+            </a>
           </motion.div>
         </div>
 
