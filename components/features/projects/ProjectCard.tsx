@@ -107,16 +107,17 @@ export function ProjectCard({
               </span>
             </div>
 
-            <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="flex gap-2 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300">
               {project.githubUrl && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors border border-white/10"
+                  aria-label={`View ${project.title} on GitHub (opens in new tab)`}
+                  className="p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors border border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <Github className="w-4 h-4 text-white" />
+                  <Github className="w-4 h-4 text-white" aria-hidden="true" />
                 </a>
               )}
               {project.liveUrl && (
@@ -124,10 +125,11 @@ export function ProjectCard({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors border border-white/10"
+                  aria-label={`View ${project.title} live demo (opens in new tab)`}
+                  className="p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors border border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <ExternalLink className="w-4 h-4 text-white" />
+                  <ExternalLink className="w-4 h-4 text-white" aria-hidden="true" />
                 </a>
               )}
             </div>

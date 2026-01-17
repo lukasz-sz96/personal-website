@@ -37,7 +37,8 @@ function DemoCredentials({ email, password }: { email: string; password: string 
             <span className="text-xs text-white/50 uppercase tracking-wider">Demo</span>
             <button
               onClick={() => copyToClipboard(email, "email")}
-              className="group/copy flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+              aria-label={copied === "email" ? "Email copied" : "Copy demo email"}
+              className="group/copy flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white/5 hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400"
             >
               <span className="font-mono text-sm text-teal-200">{email}</span>
               <AnimatePresence mode="wait">
@@ -71,7 +72,8 @@ function DemoCredentials({ email, password }: { email: string; password: string 
             <span className="text-xs text-white/50 uppercase tracking-wider">Pass</span>
             <button
               onClick={() => copyToClipboard(password, "password")}
-              className="group/copy flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+              aria-label={copied === "password" ? "Password copied" : "Copy demo password"}
+              className="group/copy flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white/5 hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400"
             >
               <span className="font-mono text-sm text-teal-200">{password}</span>
               <AnimatePresence mode="wait">
@@ -199,9 +201,10 @@ export function FeaturedProject({ project }: FeaturedProjectProps) {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white text-sm font-medium border border-white/10"
+                  aria-label={`View ${project.title} source on GitHub (opens in new tab)`}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white text-sm font-medium border border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
-                  <Github className="w-4 h-4" />
+                  <Github className="w-4 h-4" aria-hidden="true" />
                   <span className="hidden md:inline">Source</span>
                 </a>
               )}
@@ -210,9 +213,10 @@ export function FeaturedProject({ project }: FeaturedProjectProps) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-900 hover:bg-gray-100 transition-colors text-sm font-medium shadow-lg"
+                  aria-label={`View ${project.title} live demo (opens in new tab)`}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-900 hover:bg-gray-100 transition-colors text-sm font-medium shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-orange focus-visible:ring-offset-2"
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
                   <span className="hidden md:inline">Live Demo</span>
                 </a>
               )}

@@ -89,7 +89,8 @@ export function ContactInfo() {
                   "group flex items-center gap-4 p-4 rounded-2xl",
                   "bg-white/5 border border-white/10",
                   "hover:bg-white/[0.08] hover:border-white/20",
-                  "transition-all duration-200"
+                  "transition-all duration-200",
+                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-orange"
                 )}
               >
                 <div className={cn(
@@ -97,7 +98,7 @@ export function ContactInfo() {
                   "bg-gradient-to-br",
                   method.color
                 )}>
-                  <method.icon className="w-5 h-5 text-white" />
+                  <method.icon className="w-5 h-5 text-white" aria-hidden="true" />
                 </div>
                 <div className="flex-1">
                   <p className="text-xs uppercase tracking-wider text-gray-500 mb-0.5">
@@ -105,7 +106,7 @@ export function ContactInfo() {
                   </p>
                   <p className="text-white font-medium">{method.value}</p>
                 </div>
-                <ArrowUpRight className="w-5 h-5 text-gray-500 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                <ArrowUpRight className="w-5 h-5 text-gray-500 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" aria-hidden="true" />
               </a>
             ) : (
               <div
@@ -119,7 +120,7 @@ export function ContactInfo() {
                   "bg-gradient-to-br",
                   method.color
                 )}>
-                  <method.icon className="w-5 h-5 text-white" />
+                  <method.icon className="w-5 h-5 text-white" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-gray-500 mb-0.5">
@@ -146,6 +147,7 @@ export function ContactInfo() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${link.name} (opens in new tab)`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8 + i * 0.05 }}
@@ -154,11 +156,11 @@ export function ContactInfo() {
                 "bg-white/5 border border-white/10",
                 "text-gray-400 hover:text-white",
                 "hover:bg-white/10 hover:border-white/20",
-                "transition-all duration-200"
+                "transition-all duration-200",
+                "focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-orange"
               )}
-              title={link.name}
             >
-              {link.icon}
+              <span aria-hidden="true">{link.icon}</span>
             </motion.a>
           ))}
         </div>

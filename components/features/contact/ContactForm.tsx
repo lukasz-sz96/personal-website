@@ -97,11 +97,15 @@ export function ContactForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             label="Name"
+            id="name"
             delay={0.4}
           >
             <input
+              id="name"
+              name="name"
               type="text"
               required
+              autoComplete="name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="Your name"
@@ -109,7 +113,7 @@ export function ContactForm() {
                 "w-full px-4 py-3 rounded-xl",
                 "bg-white/10 border border-white/20",
                 "text-white placeholder:text-gray-400",
-                "focus:outline-none focus:border-white/40 focus:bg-white/15",
+                "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
                 "transition-all duration-200"
               )}
             />
@@ -117,11 +121,15 @@ export function ContactForm() {
 
           <FormField
             label="Email"
+            id="email"
             delay={0.45}
           >
             <input
+              id="email"
+              name="email"
               type="email"
               required
+              autoComplete="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               placeholder="your@email.com"
@@ -129,7 +137,7 @@ export function ContactForm() {
                 "w-full px-4 py-3 rounded-xl",
                 "bg-white/10 border border-white/20",
                 "text-white placeholder:text-gray-400",
-                "focus:outline-none focus:border-white/40 focus:bg-white/15",
+                "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
                 "transition-all duration-200"
               )}
             />
@@ -138,9 +146,12 @@ export function ContactForm() {
 
         <FormField
           label="Subject"
+          id="subject"
           delay={0.5}
         >
           <input
+            id="subject"
+            name="subject"
             type="text"
             required
             value={formData.subject}
@@ -150,7 +161,7 @@ export function ContactForm() {
               "w-full px-4 py-3 rounded-xl",
               "bg-white/10 border border-white/20",
               "text-white placeholder:text-gray-400",
-              "focus:outline-none focus:border-white/40 focus:bg-white/15",
+              "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
               "transition-all duration-200"
             )}
           />
@@ -158,9 +169,12 @@ export function ContactForm() {
 
         <FormField
           label="Message"
+          id="message"
           delay={0.55}
         >
           <textarea
+            id="message"
+            name="message"
             required
             rows={5}
             value={formData.message}
@@ -170,7 +184,7 @@ export function ContactForm() {
               "w-full px-4 py-3 rounded-xl resize-none",
               "bg-white/10 border border-white/20",
               "text-white placeholder:text-gray-400",
-              "focus:outline-none focus:border-white/40 focus:bg-white/15",
+              "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
               "transition-all duration-200"
             )}
           />
@@ -178,11 +192,12 @@ export function ContactForm() {
 
         {error && (
           <motion.div
+            role="alert"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400"
           >
-            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+            <AlertCircle className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
             <p className="text-sm">{error}</p>
           </motion.div>
         )}
@@ -202,7 +217,8 @@ export function ContactForm() {
               "flex items-center justify-center gap-2",
               "transition-all duration-200",
               "disabled:opacity-70 disabled:cursor-not-allowed",
-              "shadow-lg shadow-pastel-orange/20"
+              "shadow-lg shadow-pastel-orange/20",
+              "focus:outline-none focus:ring-2 focus:ring-pastel-orange focus:ring-offset-2 focus:ring-offset-gray-900"
             )}
           >
             {isSubmitting ? (
@@ -225,10 +241,12 @@ export function ContactForm() {
 
 function FormField({
   label,
+  id,
   delay,
   children,
 }: {
   label: string
+  id: string
   delay: number
   children: React.ReactNode
 }) {
@@ -238,7 +256,7 @@ function FormField({
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay }}
     >
-      <label className="block text-sm font-medium text-gray-300 mb-2">
+      <label htmlFor={id} className="block text-sm font-medium text-gray-300 mb-2">
         {label}
       </label>
       {children}

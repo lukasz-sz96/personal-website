@@ -39,15 +39,22 @@ export default function RootLayout({
         >
           <ThemeProvider>
             <LenisProvider>
+              <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-pastel-orange focus:text-gray-900 focus:rounded-lg focus:font-medium"
+              >
+                Skip to main content
+              </a>
               <Background />
               <PageWrapper>
                 <TopBar avatarText="szczesny.dev" />
-                <div
+                <main
+                  id="main-content"
                   className="w-full flex-1"
                   style={{ viewTransitionName: "page-content" }}
                 >
                   {children}
-                </div>
+                </main>
               </PageWrapper>
               <ThemeToggle />
               <KeyboardNav />

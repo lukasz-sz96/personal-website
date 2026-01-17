@@ -15,6 +15,10 @@ export function KeyboardNav() {
     const currentIndex = NAV_ORDER.indexOf(pathname)
     if (currentIndex === -1) return
 
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur()
+    }
+
     let nextIndex: number
     if (direction === "left") {
       nextIndex = currentIndex - 1
