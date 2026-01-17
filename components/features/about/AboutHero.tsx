@@ -1,12 +1,13 @@
 "use client"
 
 import { motion } from "motion/react"
-import { Rocket, Accessibility, Palette } from "lucide-react"
+import { Rocket, Accessibility, Palette, Wrench } from "lucide-react"
 
 const traits = [
   { icon: Rocket, label: "Performance Enthusiast", color: "text-orange-400" },
   { icon: Accessibility, label: "A11y Advocate", color: "text-emerald-400" },
   { icon: Palette, label: "Design System Lover", color: "text-blue-400" },
+  { icon: Wrench, label: "Tech Tinkerer", color: "text-violet-400" },
 ]
 
 export function AboutHero() {
