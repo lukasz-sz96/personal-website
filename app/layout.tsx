@@ -9,7 +9,7 @@ import { MenuBar } from "@/components/features/menu-bar";
 import { Avatar } from "@/components/ui/avatar";
 import { TopBar } from "@/components/layout/TopBar";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,8 +41,11 @@ export default function RootLayout({
             <LenisProvider>
               <Background />
               <PageWrapper>
-                <TopBar avatarTitle="Ł" avatarText="lukasz.dev" />
-                <div className="w-full flex-1" style={{ viewTransitionName: "page-content" }}>
+                <TopBar avatarTitle="Ł" avatarText="szczesny.dev" />
+                <div
+                  className="w-full flex-1"
+                  style={{ viewTransitionName: "page-content" }}
+                >
                   {children}
                 </div>
               </PageWrapper>

@@ -2,9 +2,11 @@
 
 import { motion } from "motion/react"
 import { GlassCard } from "@/components/ui/glass-card"
-import { Send, Loader2 } from "lucide-react"
+import { Send, Loader2, AlertCircle } from "lucide-react"
 import { useState, FormEvent } from "react"
 import { cn } from "@/lib/utils"
+
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID
 
 interface FormData {
   name: string
@@ -22,15 +24,32 @@ export function ContactForm() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
 
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+      if (response.ok) {
+        setIsSubmitted(true)
+      } else {
+        throw new Error("Failed to send message")
+      }
+    } catch {
+      setError("Failed to send message. Please try again or email me directly.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {
@@ -156,6 +175,17 @@ export function ContactForm() {
             )}
           />
         </FormField>
+
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-2 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400"
+          >
+            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+            <p className="text-sm">{error}</p>
+          </motion.div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
