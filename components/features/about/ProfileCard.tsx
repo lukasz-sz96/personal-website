@@ -2,8 +2,8 @@
 
 import { motion } from "motion/react"
 import { GlassCard } from "@/components/ui/glass-card"
+import { DevIcon } from "@/components/ui/dev-icons"
 import { Download, Mail, MapPin, Clock, Briefcase, Globe } from "lucide-react"
-import Image from "next/image"
 
 const stats = [
   { label: "LOCATION", value: "Płock, PL", icon: MapPin },
@@ -13,14 +13,14 @@ const stats = [
 ]
 
 const techStack = [
-  { name: "React", icon: "⚛️" },
-  { name: "TypeScript", icon: "TS" },
-  { name: "Tailwind", icon: "🎨" },
-  { name: "Next.js", icon: "▲" },
-  { name: "Framer Motion", icon: "✨" },
-  { name: "Figma", icon: "🎯" },
-  { name: "Node.js", icon: "🟢" },
-  { name: "HTML", icon: "📄" },
+  "React",
+  "TypeScript",
+  "TailwindCSS",
+  "NextJS",
+  "FramerMotion",
+  "Figma",
+  "NodeJS",
+  "HTML5",
 ]
 
 export function ProfileCard() {
@@ -122,14 +122,14 @@ export function ProfileCard() {
           <div className="grid grid-cols-4 gap-2">
             {techStack.map((tech, i) => (
               <motion.div
-                key={tech.name}
+                key={tech}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8 + i * 0.05 }}
-                className="aspect-square rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-lg hover:bg-white/10 hover:border-white/20 transition-all cursor-default"
-                title={tech.name}
+                className="group aspect-square rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-white/20 transition-all cursor-default"
+                title={tech}
               >
-                {tech.icon}
+                <DevIcon name={tech} className="text-white/70 group-hover:text-white transition-colors" />
               </motion.div>
             ))}
           </div>
