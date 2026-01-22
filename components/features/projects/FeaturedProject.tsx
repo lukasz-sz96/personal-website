@@ -258,7 +258,7 @@ export function FeaturedProject({ project }: FeaturedProjectProps) {
             )}
           </div>
 
-          <div className="absolute top-8 right-8 md:top-12 md:right-12 opacity-20">
+          <div className="absolute top-8 right-8 md:top-12 md:right-12 opacity-20 pointer-events-none">
             <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
               <path d="M0 0h60v2H2v58H0V0z" fill="white" />
               <path d="M60 60H0v-2h58V0h2v60z" fill="white" />

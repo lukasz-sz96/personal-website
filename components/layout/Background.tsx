@@ -5,7 +5,10 @@ import background from "@/public/backgrounds/Resthouse.png"
 
 export function Background() {
   return (
-    <div className="fixed inset-0 -z-10">
+    <div
+      className="fixed inset-0 -z-10"
+      style={{ viewTransitionName: 'none' }}
+    >
       <Image
         alt=""
         src={background}
@@ -21,6 +24,7 @@ export function Background() {
         className="absolute inset-0 backdrop-blur-md backdrop-saturate-150"
         style={{
           background: 'rgba(255, 255, 255, 0.02)',
+          WebkitBackdropFilter: 'blur(12px) saturate(1.5)',
         }}
       />
 
