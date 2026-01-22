@@ -8,6 +8,7 @@ import { KeyboardNav, SwipeNav, NavigationHint } from "@/components/common";
 import { MenuBar } from "@/components/features/menu-bar";
 import { Avatar } from "@/components/ui/avatar";
 import { TopBar } from "@/components/layout/TopBar";
+import { ChatWidget } from "@/components/features/chat";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -58,6 +59,7 @@ export default function RootLayout({
               <KeyboardNav />
               <SwipeNav />
               <NavigationHint />
+              <ChatWidget />
             </LenisProvider>
         </body>
       </html>
