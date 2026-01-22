@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import { GlassCard } from "@/components/ui/glass-card";
-import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface Project {
@@ -107,17 +107,17 @@ export function ProjectCard({
               </span>
             </div>
 
-            <div className="flex gap-2 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300">
+            <div className="flex gap-2">
               {project.githubUrl && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`View ${project.title} on GitHub (opens in new tab)`}
-                  className="p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors border border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                  onClick={(e) => e.stopPropagation()}
+                  aria-label={`View ${project.title} source on GitHub (opens in new tab)`}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white text-sm font-medium border border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
-                  <Github className="w-4 h-4 text-white" aria-hidden="true" />
+                  <Github className="w-4 h-4" aria-hidden="true" />
+                  <span className="hidden md:inline">Source</span>
                 </a>
               )}
               {project.liveUrl && (
@@ -126,10 +126,10 @@ export function ProjectCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`View ${project.title} live demo (opens in new tab)`}
-                  className="p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors border border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                  onClick={(e) => e.stopPropagation()}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-gray-900 hover:bg-gray-100 transition-colors text-sm font-medium shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 >
-                  <ExternalLink className="w-4 h-4 text-white" aria-hidden="true" />
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                  <span className="hidden md:inline">Live Demo</span>
                 </a>
               )}
             </div>
@@ -161,7 +161,7 @@ export function ProjectCard({
             </p>
 
             <div className="flex flex-wrap gap-2 relative">
-              {project.tech.slice(0, isLarge ? 6 : 4).map((tech) => (
+              {project.tech.map((tech) => (
                 <span
                   key={tech}
                   className="px-3 py-1 text-xs font-medium rounded-full bg-black/30 text-white/90 border border-white/10"
@@ -169,20 +169,9 @@ export function ProjectCard({
                   {tech}
                 </span>
               ))}
-              {project.tech.length > (isLarge ? 6 : 4) && (
-                <span className="px-3 py-1 text-xs font-medium rounded-full bg-black/20 text-white/60">
-                  +{project.tech.length - (isLarge ? 6 : 4)}
-                </span>
-              )}
             </div>
           </div>
 
-          <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white text-gray-900 font-medium text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 shadow-lg">
-              View Project
-              <ArrowUpRight className="w-4 h-4" />
-            </div>
-          </div>
         </div>
 
       </GlassCard>

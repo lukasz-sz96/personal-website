@@ -60,7 +60,7 @@ export function ProfileCard() {
             transition={{ delay: 0.4 }}
             className="text-gray-400 text-sm"
           >
-            Frontend Developer
+            Web Developer
           </motion.p>
 
           <motion.div

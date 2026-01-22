@@ -28,6 +28,34 @@ export const projects: Project[] = [
       password: "demopantry",
     },
   },
+  {
+    id: "2",
+    title: "Wanderlust",
+    description:
+      "A self-hosted travel planning and journaling platform for documenting adventures.",
+    longDescription:
+      "Plan your trips, create detailed itineraries, and journal your travel experiences. Self-hosted for full data ownership with a beautiful interface designed for wanderers who want to preserve their memories.",
+    image: "/projects/wanderlust.png",
+    gradient: "bg-gradient-to-br from-amber-500/80 via-orange-500/20 to-rose-600",
+    tech: ["TypeScript", "React", "Node.js", "Docker", "AI"],
+    githubUrl: "https://github.com/lukasz-sz96/Wanderlust",
+    year: "2026",
+    category: "Web Application",
+  },
+  {
+    id: "3",
+    title: "Polidex",
+    description:
+      "A modern RAG admin system for managing knowledge bases that power AI chatbots.",
+    longDescription:
+      "Build and manage knowledge bases with a sleek admin interface. Features document ingestion, semantic search, and API endpoints for integrating AI-powered Q&A into any application.",
+    image: "/projects/polidex.png",
+    gradient: "bg-gradient-to-br from-violet-600/70 via-purple-600/20 to-indigo-700/70",
+    tech: ["Python", "AI", "TypeScript", "FastAPI", "React", "Vector DB", "Docker"],
+    githubUrl: "https://github.com/lukasz-sz96/Polidex",
+    year: "2026",
+    category: "AI / Backend",
+  },
   // {
   //   id: "2",
   //   title: "Title",

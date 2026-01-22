@@ -23,8 +23,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Łukasz Szczęsny | Frontend Developer",
-  description: "Frontend Developer specializing in React.js, TypeScript, and modern web technologies.",
+  title: "Łukasz Szczęsny | Web Developer",
+  description: "Web Developer specializing in React.js, TypeScript, and modern web technologies.",
 };
 
 export default function RootLayout({
