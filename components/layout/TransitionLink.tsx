@@ -3,22 +3,19 @@
 import { Link as ViewTransitionLink } from "next-view-transitions"
 import NextLink from "next/link"
 import { usePathname } from "next/navigation"
-import { ReactNode, MouseEvent, useEffect, useState, AnchorHTMLAttributes } from "react"
-
-const NAV_ORDER = ["/", "/projects", "/about", "/contact"]
+import { ReactNode, MouseEvent, AnchorHTMLAttributes } from "react"
+import { NAV_ORDER } from "@/lib/constants"
+import { useMounted } from "@/lib/hooks"
+import { isFirefox } from "@/lib/utils"
 
 export interface TransitionLinkProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> {
   href: string
   children: ReactNode
 }
 
-export function TransitionLink({ href, children, className, ...rest }: TransitionLinkProps) {
+export const TransitionLink = ({ href, children, className, ...rest }: TransitionLinkProps) => {
   const pathname = usePathname()
-  const [isFirefox, setIsFirefox] = useState(false)
-
-  useEffect(() => {
-    setIsFirefox(navigator.userAgent.toLowerCase().includes("firefox"))
-  }, [])
+  const isFirefoxBrowser = useMounted() && isFirefox()
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (pathname === href) {
@@ -31,7 +28,7 @@ export function TransitionLink({ href, children, className, ...rest }: Transitio
     document.documentElement.dataset.transition = direction
   }
 
-  if (isFirefox) {
+  if (isFirefoxBrowser) {
     return (
       <NextLink href={href} className={className} {...rest}>
         {children}

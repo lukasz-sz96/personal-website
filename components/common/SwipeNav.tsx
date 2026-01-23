@@ -3,11 +3,12 @@
 import { useEffect, useCallback, useRef } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { useTransitionRouter } from "next-view-transitions"
+import { NAV_ORDER } from "@/lib/constants"
+import { isFirefox } from "@/lib/utils"
 
-const NAV_ORDER = ["/", "/projects", "/about", "/contact"]
 const SWIPE_THRESHOLD = 50
 
-export function SwipeNav() {
+export const SwipeNav = () => {
   const pathname = usePathname()
   const router = useRouter()
   const transitionRouter = useTransitionRouter()
@@ -38,9 +39,7 @@ export function SwipeNav() {
       document.documentElement.dataset.transition = transitionDirection
     }
 
-    const isFirefox = navigator.userAgent.toLowerCase().includes("firefox")
-
-    if (isFirefox) {
+    if (isFirefox()) {
       router.push(nextPath)
     } else {
       transitionRouter.push(nextPath)

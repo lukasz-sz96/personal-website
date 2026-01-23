@@ -93,7 +93,7 @@ export function ProfileCard() {
           transition={{ delay: 0.6 }}
           className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/10"
         >
-          {stats.map((stat, i) => (
+          {stats.map((stat) => (
             <div key={stat.label}>
               <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-1">
                 {stat.label}
@@ -120,12 +120,12 @@ export function ProfileCard() {
             <h3 className="font-medium text-white">Core Stack</h3>
           </div>
           <div className="grid grid-cols-4 gap-2">
-            {techStack.map((tech, i) => (
+            {techStack.map((tech, index) => (
               <motion.div
                 key={tech}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.8 + i * 0.05 }}
+                transition={{ delay: 0.8 + index * 0.05 }}
                 className="group aspect-square rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-white/20 transition-all cursor-default"
                 title={tech}
               >

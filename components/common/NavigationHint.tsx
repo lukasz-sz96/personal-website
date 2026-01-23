@@ -1,13 +1,32 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useSyncExternalStore } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
+import { useMounted } from "@/lib/hooks"
 
-export function NavigationHint() {
+function subscribeToMediaQuery(callback: () => void) {
+  const mql = window.matchMedia("(max-width: 768px)")
+  mql.addEventListener("change", callback)
+  return () => mql.removeEventListener("change", callback)
+}
+
+function getIsMobileSnapshot() {
+  return window.matchMedia("(max-width: 768px)").matches
+}
+
+function getIsMobileServerSnapshot() {
+  return false
+}
+
+export const NavigationHint = () => {
   const [visible, setVisible] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const isMobile = useSyncExternalStore(
+    subscribeToMediaQuery,
+    getIsMobileSnapshot,
+    getIsMobileServerSnapshot
+  )
+  const mounted = useMounted()
 
   const showHint = useCallback(() => {
     setVisible(true)
@@ -16,14 +35,6 @@ export function NavigationHint() {
   }, [])
 
   useEffect(() => {
-    setMounted(true)
-    setIsMobile(window.matchMedia("(max-width: 768px)").matches)
-
-    const handleResize = () => {
-      setIsMobile(window.matchMedia("(max-width: 768px)").matches)
-    }
-    window.addEventListener("resize", handleResize)
-
     const handleShowHint = () => showHint()
     window.addEventListener("show-nav-hint", handleShowHint)
 
@@ -41,13 +52,11 @@ export function NavigationHint() {
       return () => {
         clearTimeout(showTimer)
         clearTimeout(hideTimer)
-        window.removeEventListener("resize", handleResize)
         window.removeEventListener("show-nav-hint", handleShowHint)
       }
     }
 
     return () => {
-      window.removeEventListener("resize", handleResize)
       window.removeEventListener("show-nav-hint", handleShowHint)
     }
   }, [showHint])

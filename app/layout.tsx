@@ -5,8 +5,7 @@ import "./globals.css";
 import { Background, PageWrapper } from "@/components/layout";
 import { LenisProvider } from "@/components/providers";
 import { KeyboardNav, SwipeNav, NavigationHint } from "@/components/common";
-import { MenuBar } from "@/components/features/menu-bar";
-import { Avatar } from "@/components/ui/avatar";
+
 import { TopBar } from "@/components/layout/TopBar";
 import { ChatWidget } from "@/components/features/chat";
 

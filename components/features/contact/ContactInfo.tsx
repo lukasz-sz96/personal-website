@@ -56,7 +56,7 @@ export function ContactInfo() {
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6">
-          <span className="text-white">Let's create</span>
+          <span className="text-white">Let&apos;s create</span>
           <br />
           <span className="bg-gradient-to-r from-pastel-orange via-pastel-rose to-pastel-orange bg-clip-text text-transparent">
             something amazing

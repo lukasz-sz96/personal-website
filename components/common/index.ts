@@ -1,3 +1,5 @@
 export { KeyboardNav } from "./KeyboardNav"
 export { SwipeNav } from "./SwipeNav"
 export { NavigationHint } from "./NavigationHint"
+export { ErrorBoundary } from "./ErrorBoundary"
+export { ThemeToggle } from "./ThemeToggle"

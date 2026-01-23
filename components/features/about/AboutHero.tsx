@@ -27,7 +27,7 @@ export function AboutHero() {
 
       <div className="space-y-4 text-gray-400 mb-8">
         <p>
-          Hello! I'm a passionate Web Developer with{" "}
+          Hello! I&apos;m a passionate Web Developer with{" "}
           <span className="text-white font-medium">4 years of commercial experience</span>{" "}
           specializing in building accessible, pixel-perfect, and performant web applications.
         </p>

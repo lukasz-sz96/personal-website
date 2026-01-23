@@ -79,7 +79,7 @@ export function ContactForm() {
             </svg>
           </motion.div>
           <h3 className="text-2xl font-semibold text-white mb-2">Message Sent!</h3>
-          <p className="text-gray-400">Thank you for reaching out. I'll get back to you soon.</p>
+          <p className="text-gray-400">Thank you for reaching out. I&apos;ll get back to you soon.</p>
         </motion.div>
       </GlassCard>
     )

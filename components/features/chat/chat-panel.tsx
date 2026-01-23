@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "motion/react"
 import { useState, useEffect, useCallback } from "react"
 import { cn } from "@/lib/utils"
+import { useBodyScrollLock } from "@/lib/hooks"
 import { ChatHeader } from "./chat-header"
 import { ChatDisclaimer } from "./chat-disclaimer"
 import { ChatSuggestions } from "./chat-suggestions"
@@ -34,16 +35,7 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
   }, [handleKeyDown])
 
   // Lock body scroll on mobile when open
-  useEffect(() => {
-    if (isOpen && window.innerWidth < 768) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-    return () => {
-      document.body.style.overflow = ""
-    }
-  }, [isOpen])
+  useBodyScrollLock(isOpen, true)
 
   const showSuggestions = messages.length === 0
 
