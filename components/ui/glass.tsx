@@ -11,10 +11,7 @@ export const Glass = ({ children, className, style, ...props }: GlassProps) => {
         <div
             className={cn(
                 "relative",
-                "backdrop-blur-xl",
-                "bg-white/80 dark:bg-white/10",
-                "shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]",
-                "dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)]",
+                "glass-surface",
                 className
             )}
             style={style}

@@ -43,34 +43,26 @@ export const MenuBar = () => {
           >
             {currentTitle}
           </motion.span>
-          <div className="flex gap-1.5" role="tablist" aria-label="Page navigation">
+          <div className="flex gap-1.5" aria-label="Page shortcuts">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.url
-
-              if (isActive) {
-                return (
-                  <button
-                    key={item.url}
-                    type="button"
-                    aria-label="Show navigation hint"
-                    onClick={() => window.dispatchEvent(new CustomEvent("show-nav-hint"))}
-                    className="focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-orange focus-visible:ring-offset-1 focus-visible:ring-offset-gray-900 rounded-full"
-                  >
-                    <span className="block w-6 h-2 rounded-full bg-pastel-orange transition-all duration-300" />
-                  </button>
-                )
-              }
 
               return (
                 <TransitionLink
                   key={item.url}
                   href={item.url}
-                  aria-label={item.title}
-                  role="tab"
-                  aria-selected={false}
+                  aria-label={`Go to ${item.title}`}
+                  aria-current={isActive ? "page" : undefined}
+                  onClick={isActive ? () => window.dispatchEvent(new CustomEvent("show-nav-hint")) : undefined}
                   className="focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-orange focus-visible:ring-offset-1 focus-visible:ring-offset-gray-900 rounded-full"
                 >
-                  <span className="block w-2 h-2 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300" />
+                  <span
+                    className={`block rounded-full transition-all duration-300 ${
+                      isActive
+                        ? "w-6 h-2 bg-pastel-orange"
+                        : "w-2 h-2 bg-white/30 hover:bg-white/50"
+                    }`}
+                  />
                 </TransitionLink>
               )
             })}
