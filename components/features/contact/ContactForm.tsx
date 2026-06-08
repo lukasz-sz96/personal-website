@@ -1,21 +1,18 @@
-"use client"
+"use client";
 
-import { motion } from "motion/react"
-import { GlassCard } from "@/components/ui/glass-card"
-import { Send, Loader2, AlertCircle } from "lucide-react"
-import { useState, FormEvent } from "react"
-import { cn } from "@/lib/utils"
+import { motion } from "motion/react";
+import { GlassCard } from "@/components/ui/glass-card";
+import { Send, Loader2, AlertCircle } from "lucide-react";
+import { useState, FormEvent } from "react";
+import { cn } from "@/lib/utils";
 
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID
-const isFormConfigured = Boolean(
-  FORMSPREE_ID && FORMSPREE_ID !== "your_formspree_id"
-)
+const FORMSPREE_ID = "mwvvvzlv";
 
 interface FormData {
-  name: string
-  email: string
-  subject: string
-  message: string
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
 }
 
 export function ContactForm() {
@@ -24,24 +21,15 @@ export function ContactForm() {
     email: "",
     subject: "",
     message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const configError = isFormConfigured
-    ? null
-    : "Contact form is not configured. Please email me directly."
-
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!isFormConfigured) {
-      setError(configError)
-      return
-    }
-
-    setIsSubmitting(true)
-    setError(null)
+    setIsSubmitting(true);
+    setError(null);
 
     try {
       const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
@@ -50,19 +38,19 @@ export function ContactForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      })
+      });
 
       if (response.ok) {
-        setIsSubmitted(true)
+        setIsSubmitted(true);
       } else {
-        throw new Error("Failed to send message")
+        throw new Error("Failed to send message");
       }
     } catch {
-      setError("Failed to send message. Please try again or email me directly.")
+      setError("Failed to send message. Please try again or email me directly.");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   if (isSubmitted) {
     return (
@@ -78,7 +66,12 @@ export function ContactForm() {
             transition={{ type: "spring", delay: 0.1 }}
             className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center"
           >
-            <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg
+              className="w-10 h-10 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
               <motion.path
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
@@ -94,7 +87,7 @@ export function ContactForm() {
           <p className="text-gray-400">Thanks for reaching out. I&apos;ll get back to you soon.</p>
         </motion.div>
       </GlassCard>
-    )
+    );
   }
 
   return (
@@ -107,11 +100,7 @@ export function ContactForm() {
         className="space-y-6"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <FormField
-            label="Name"
-            id="name"
-            delay={0.4}
-          >
+          <FormField label="Name" id="name" delay={0.4}>
             <input
               id="name"
               name="name"
@@ -126,16 +115,12 @@ export function ContactForm() {
                 "bg-white/10 border border-white/20",
                 "text-white placeholder:text-white/50",
                 "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
-                "transition-all duration-200"
+                "transition-all duration-200",
               )}
             />
           </FormField>
 
-          <FormField
-            label="Email"
-            id="email"
-            delay={0.45}
-          >
+          <FormField label="Email" id="email" delay={0.45}>
             <input
               id="email"
               name="email"
@@ -150,17 +135,13 @@ export function ContactForm() {
                 "bg-white/10 border border-white/20",
                 "text-white placeholder:text-white/50",
                 "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
-                "transition-all duration-200"
+                "transition-all duration-200",
               )}
             />
           </FormField>
         </div>
 
-        <FormField
-          label="Subject"
-          id="subject"
-          delay={0.5}
-        >
+        <FormField label="Subject" id="subject" delay={0.5}>
           <input
             id="subject"
             name="subject"
@@ -174,16 +155,12 @@ export function ContactForm() {
               "bg-white/10 border border-white/20",
               "text-white placeholder:text-white/50",
               "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
-              "transition-all duration-200"
+              "transition-all duration-200",
             )}
           />
         </FormField>
 
-        <FormField
-          label="Message"
-          id="message"
-          delay={0.55}
-        >
+        <FormField label="Message" id="message" delay={0.55}>
           <textarea
             id="message"
             name="message"
@@ -197,12 +174,12 @@ export function ContactForm() {
               "bg-white/10 border border-white/20",
               "text-white placeholder:text-white/50",
               "focus:outline-none focus:ring-2 focus:ring-pastel-orange/50 focus:border-white/40 focus:bg-white/15",
-              "transition-all duration-200"
+              "transition-all duration-200",
             )}
           />
         </FormField>
 
-        {(configError || error) && (
+        {error && (
           <motion.div
             role="alert"
             initial={{ opacity: 0, y: -10 }}
@@ -210,7 +187,7 @@ export function ContactForm() {
             className="flex items-center gap-2 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400"
           >
             <AlertCircle className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
-            <p className="text-sm">{error || configError}</p>
+            <p className="text-sm">{error}</p>
           </motion.div>
         )}
 
@@ -221,7 +198,7 @@ export function ContactForm() {
         >
           <button
             type="submit"
-            disabled={isSubmitting || !isFormConfigured}
+            disabled={isSubmitting}
             className={cn(
               "w-full py-4 rounded-xl font-medium text-sm",
               "bg-gradient-to-r from-pastel-orange to-pastel-rose",
@@ -230,7 +207,7 @@ export function ContactForm() {
               "transition-all duration-200",
               "disabled:opacity-70 disabled:cursor-not-allowed",
               "shadow-lg shadow-pastel-orange/20",
-              "focus:outline-none focus:ring-2 focus:ring-pastel-orange focus:ring-offset-2 focus:ring-offset-gray-900"
+              "focus:outline-none focus:ring-2 focus:ring-pastel-orange focus:ring-offset-2 focus:ring-offset-gray-900",
             )}
           >
             {isSubmitting ? (
@@ -248,7 +225,7 @@ export function ContactForm() {
         </motion.div>
       </motion.form>
     </GlassCard>
-  )
+  );
 }
 
 function FormField({
@@ -257,10 +234,10 @@ function FormField({
   delay,
   children,
 }: {
-  label: string
-  id: string
-  delay: number
-  children: React.ReactNode
+  label: string;
+  id: string;
+  delay: number;
+  children: React.ReactNode;
 }) {
   return (
     <motion.div
@@ -273,5 +250,5 @@ function FormField({
       </label>
       {children}
     </motion.div>
-  )
+  );
 }
