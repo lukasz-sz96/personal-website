@@ -1,4 +1,5 @@
 import { Github } from "lucide-react"
+import Link from "next/link"
 import { Avatar } from "../ui/avatar"
 import { MenuBar } from "../features/menu-bar"
 
@@ -9,7 +10,13 @@ export const TopBar = ({ avatarText }: TopBarProps) => {
     return (
         <div className="flex w-full justify-between items-center gap-4 p-4 md:p-6">
             <div className="flex-shrink-0">
-                <Avatar text={avatarText} />
+                <Link
+                    href="/"
+                    aria-label="Go to home page"
+                    className="block rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-orange focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950"
+                >
+                    <Avatar text={avatarText} />
+                </Link>
             </div>
             <div className="flex items-center gap-3">
                 <a
