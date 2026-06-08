@@ -13,11 +13,11 @@ export default function AboutPage() {
           <ProfileCard />
         </aside>
 
-        <main className="space-y-6">
+        <div className="space-y-6">
           <AboutHero />
           <ExperienceTimeline />
           <TechnicalProficiency />
-        </main>
+        </div>
       </div>
     </div>
   )
