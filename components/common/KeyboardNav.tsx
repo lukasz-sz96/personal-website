@@ -1,14 +1,12 @@
 "use client"
 
 import { useEffect, useCallback } from "react"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { useTransitionRouter } from "next-view-transitions"
 import { NAV_ORDER } from "@/lib/constants"
-import { isFirefox } from "@/lib/utils"
 
 export const KeyboardNav = () => {
   const pathname = usePathname()
-  const router = useRouter()
   const transitionRouter = useTransitionRouter()
 
   const navigate = useCallback((direction: "left" | "right") => {
@@ -39,18 +37,15 @@ export const KeyboardNav = () => {
       document.documentElement.dataset.transition = transitionDirection
     }
 
-    if (isFirefox()) {
-      router.push(nextPath)
-    } else {
-      transitionRouter.push(nextPath)
-    }
-  }, [pathname, router, transitionRouter])
+    transitionRouter.push(nextPath)
+  }, [pathname, transitionRouter])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement ||
+        (e.target instanceof HTMLElement && e.target.closest('[role="dialog"]')) ||
         (e.target as HTMLElement).isContentEditable
       ) {
         return

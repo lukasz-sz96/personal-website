@@ -1,16 +1,14 @@
 "use client"
 
 import { useEffect, useCallback, useRef } from "react"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { useTransitionRouter } from "next-view-transitions"
 import { NAV_ORDER } from "@/lib/constants"
-import { isFirefox } from "@/lib/utils"
 
 const SWIPE_THRESHOLD = 50
 
 export const SwipeNav = () => {
   const pathname = usePathname()
-  const router = useRouter()
   const transitionRouter = useTransitionRouter()
   const touchStartX = useRef<number | null>(null)
   const touchStartY = useRef<number | null>(null)
@@ -39,15 +37,15 @@ export const SwipeNav = () => {
       document.documentElement.dataset.transition = transitionDirection
     }
 
-    if (isFirefox()) {
-      router.push(nextPath)
-    } else {
-      transitionRouter.push(nextPath)
-    }
-  }, [pathname, router, transitionRouter])
+    transitionRouter.push(nextPath)
+  }, [pathname, transitionRouter])
 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
+      if (e.target instanceof HTMLElement && e.target.closest('[role="dialog"]')) {
+        return
+      }
+
       touchStartX.current = e.touches[0].clientX
       touchStartY.current = e.touches[0].clientY
     }
