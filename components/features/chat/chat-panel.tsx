@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, AnimatePresence } from "motion/react"
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { cn } from "@/lib/utils"
 import { useBodyScrollLock } from "@/lib/hooks"
 import { ChatHeader } from "./chat-header"
@@ -16,14 +16,56 @@ interface ChatPanelProps {
   onClose: () => void
 }
 
+const FOCUSABLE_SELECTOR = [
+  "a[href]",
+  "button:not([disabled])",
+  "textarea:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "[tabindex]:not([tabindex='-1'])",
+].join(",")
+
 export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
   const { messages, isLoading, sendMessage } = useChat()
   const [showDisclaimer, setShowDisclaimer] = useState(true)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null)
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+      if (!isOpen) return
+
+      if (e.key === "Escape") {
         onClose()
+        return
+      }
+
+      if (e.key !== "Tab") {
+        return
+      }
+
+      const panel = panelRef.current
+      if (!panel) return
+
+      const focusable = Array.from(
+        panel.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+      ).filter((element) => element.offsetParent !== null)
+
+      if (focusable.length === 0) {
+        e.preventDefault()
+        panel.focus()
+        return
+      }
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
       }
     },
     [isOpen, onClose]
@@ -33,6 +75,39 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
     document.addEventListener("keydown", handleKeyDown)
     return () => document.removeEventListener("keydown", handleKeyDown)
   }, [handleKeyDown])
+
+  useEffect(() => {
+    const inertTargets = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-chat-inert-target]")
+    )
+
+    if (!isOpen) {
+      return
+    }
+
+    previouslyFocusedRef.current =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null
+
+    inertTargets.forEach((target) => {
+      target.setAttribute("aria-hidden", "true")
+      ;(target as HTMLElement & { inert?: boolean }).inert = true
+    })
+
+    const focusTimer = window.setTimeout(() => {
+      const firstFocusable = panelRef.current?.querySelector<HTMLElement>(FOCUSABLE_SELECTOR)
+      ;(firstFocusable ?? panelRef.current)?.focus()
+    }, 0)
+
+    return () => {
+      window.clearTimeout(focusTimer)
+      inertTargets.forEach((target) => {
+        target.removeAttribute("aria-hidden")
+        ;(target as HTMLElement & { inert?: boolean }).inert = false
+      })
+      previouslyFocusedRef.current?.focus()
+      previouslyFocusedRef.current = null
+    }
+  }, [isOpen])
 
   // Lock body scroll on mobile when open
   useBodyScrollLock(isOpen, true)
@@ -61,16 +136,14 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
               // Desktop: fixed size panel
               "md:w-[380px] md:h-[520px]",
               "md:rounded-2xl",
-              // Glass effect
-              "backdrop-blur-xl",
-              "bg-gray-900/90 md:bg-gray-900/80",
-              "md:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)]",
-              "md:shadow-2xl",
+              // Surface
+              "chat-panel-surface",
               // Flex layout
               "flex flex-col overflow-hidden",
               // Safe area for mobile
-              "pt-safe-top pb-safe-bottom"
+              "safe-area-panel"
             )}
+            ref={panelRef}
             initial={{
               opacity: 0,
               scale: 0.95,
@@ -94,6 +167,7 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
             role="dialog"
             aria-modal="true"
             aria-label="Chat about Łukasz"
+            tabIndex={-1}
           >
             {/* Glow effect - desktop only */}
             <div
