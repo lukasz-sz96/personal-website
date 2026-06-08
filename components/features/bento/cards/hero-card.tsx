@@ -22,7 +22,10 @@ export const HeroCard = () => {
           Developer.
         </h1>
         <p className="text-gray-600 dark:text-white/70 text-lg md:text-xl max-w-md leading-relaxed">
-          I build web apps with React, TypeScript, backend APIs, and clean interfaces.
+          I build practical web apps with React, TypeScript, and clean APIs.
+        </p>
+        <p className="text-gray-600 dark:text-white/70 text-lg md:text-xl max-w-md leading-relaxed">
+          I care about interfaces that feel simple, fast, and easy to use.
         </p>
       </div>
       <div className="flex flex-wrap gap-3 mt-8">
