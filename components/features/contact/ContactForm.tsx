@@ -7,6 +7,9 @@ import { useState, FormEvent } from "react"
 import { cn } from "@/lib/utils"
 
 const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID
+const isFormConfigured = Boolean(
+  FORMSPREE_ID && FORMSPREE_ID !== "your_formspree_id"
+)
 
 interface FormData {
   name: string
@@ -25,9 +28,18 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const configError = isFormConfigured
+    ? null
+    : "Contact form is not configured. Please email me directly."
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+
+    if (!isFormConfigured) {
+      setError(configError)
+      return
+    }
+
     setIsSubmitting(true)
     setError(null)
 
@@ -190,7 +202,7 @@ export function ContactForm() {
           />
         </FormField>
 
-        {error && (
+        {(configError || error) && (
           <motion.div
             role="alert"
             initial={{ opacity: 0, y: -10 }}
@@ -198,7 +210,7 @@ export function ContactForm() {
             className="flex items-center gap-2 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400"
           >
             <AlertCircle className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
-            <p className="text-sm">{error}</p>
+            <p className="text-sm">{error || configError}</p>
           </motion.div>
         )}
 
@@ -209,7 +221,7 @@ export function ContactForm() {
         >
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !isFormConfigured}
             className={cn(
               "w-full py-4 rounded-xl font-medium text-sm",
               "bg-gradient-to-r from-pastel-orange to-pastel-rose",
