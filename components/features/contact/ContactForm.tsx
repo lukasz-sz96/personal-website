@@ -78,8 +78,8 @@ export function ContactForm() {
               />
             </svg>
           </motion.div>
-          <h3 className="text-2xl font-semibold text-white mb-2">Message Sent!</h3>
-          <p className="text-gray-400">Thank you for reaching out. I&apos;ll get back to you soon.</p>
+          <h3 className="text-2xl font-semibold text-white mb-2">Message sent</h3>
+          <p className="text-gray-400">Thanks for reaching out. I&apos;ll get back to you soon.</p>
         </motion.div>
       </GlassCard>
     )
@@ -179,7 +179,7 @@ export function ContactForm() {
             rows={5}
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            placeholder="Tell me about your project, idea, or just say hello..."
+            placeholder="What are you building, fixing, or hiring for?"
             className={cn(
               "w-full px-4 py-3 rounded-xl resize-none",
               "bg-white/10 border border-white/20",
@@ -229,7 +229,7 @@ export function ContactForm() {
             ) : (
               <>
                 <Send className="w-4 h-4" />
-                Send Message
+                Send message
               </>
             )}
           </button>

@@ -22,7 +22,7 @@ const experiences: Experience[] = [
     company: "Accenture",
     period: "2021 - 2025",
     description:
-      "Building enterprise-grade web applications for global clients. Specializing in React ecosystem, GenAI interfaces, and accessibility implementations across web, mobile, and VR platforms.",
+      "Built React interfaces and integrations for client projects across web, mobile, and VR. Worked on accessibility, UI architecture, and GenAI product screens.",
     clients: ["Google", "Meta", "VeloBank", "Procter & Gamble", "Lavazza"],
     technologies: [
       "React",
@@ -38,7 +38,7 @@ const experiences: Experience[] = [
     company: "Self Employed",
     period: "2017 - 2022",
     description:
-      "Founded and managed an online community with 50,000+ users and a team of 20 staff members. Handled UI/UX design, frontend development, database administration, and server infrastructure.",
+      "Ran an online community with 50,000+ users and a 20-person staff team. Covered UI design, application code, database work, and server operations.",
     technologies: ["React.js", "REST API", "MySQL", "Node.js"],
     status: "completed",
   },
@@ -47,7 +47,7 @@ const experiences: Experience[] = [
     company: "Self Employed",
     period: "2019 - 2021",
     description:
-      "Created custom websites, JavaScript applications, and database solutions for various clients. Worked with both Windows Server and Linux environments.",
+      "Built websites, JavaScript applications, and MySQL-backed tools for small clients. Worked with both Windows Server and Linux environments.",
     technologies: ["JavaScript", "MySQL", "Lua"],
     status: "past",
   },

@@ -10,7 +10,7 @@ export const BottomSection = () => {
         iconColor="text-purple-400"
         iconBg="bg-purple-50 dark:bg-purple-500/20"
         title="Projects"
-        subtitle="Case studies & experiments"
+        subtitle="Apps, tools, and experiments"
       />
       <LinkCard
         href="/about"
@@ -26,7 +26,7 @@ export const BottomSection = () => {
         iconColor="text-blue-400"
         iconBg="bg-blue-50 dark:bg-blue-500/20"
         title="Contact"
-        subtitle="Let's work together"
+        subtitle="Tell me what you need"
       />
     </div>
   );

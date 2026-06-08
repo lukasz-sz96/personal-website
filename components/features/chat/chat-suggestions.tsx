@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 
 const SUGGESTIONS = [
   "What's your tech stack?",
-  "Tell me about your previous experience",
+  "What experience do you have?",
   "Are you open to remote work?",
   "What projects excite you?",
 ]

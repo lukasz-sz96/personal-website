@@ -29,8 +29,8 @@ export function ChatHeader({ onClose }: ChatHeaderProps) {
           Ł
         </div>
         <div>
-          <h2 className="text-sm font-semibold text-white">AI Łukasz</h2>
-          <p className="text-xs text-white/50">Usually replies instantly</p>
+          <h2 className="text-sm font-semibold text-white">Ask about Łukasz</h2>
+          <p className="text-xs text-white/50">Projects, skills, and availability</p>
         </div>
       </div>
 

@@ -5,9 +5,9 @@ export const projects: Project[] = [
     id: "1",
     title: "PantryPilot",
     description:
-      "A modern kitchen companion app for managing your pantry, recipes, and shopping lists.",
+      "A pantry, recipe, and shopping list app for everyday cooking.",
     longDescription:
-      "Track your pantry, import recipes with AI, and discover what you can cook with ingredients you already have. Features step-by-step cooking mode, automatic pantry updates, and smart shopping lists.",
+      "Track pantry items, import recipes with LLM assistance, and find meals you can cook with what you already have. Includes cooking mode, pantry updates, and shopping lists.",
     image: "/projects/pantrypilot.png",
     gradient: "bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700",
     tech: [
@@ -34,7 +34,7 @@ export const projects: Project[] = [
     description:
       "A self-hosted travel planning and journaling platform for documenting adventures.",
     longDescription:
-      "Plan your trips, create detailed itineraries, and journal your travel experiences. Self-hosted for full data ownership with a beautiful interface designed for wanderers who want to preserve their memories.",
+      "Plan trips, build itineraries, and keep travel notes in a self-hosted app. The project focuses on owning your data and keeping trip history easy to browse.",
     image: "/projects/wanderlust.png",
     gradient: "bg-gradient-to-br from-amber-500/80 via-orange-500/20 to-rose-600",
     tech: ["TypeScript", "React", "Node.js", "Docker", "AI"],
@@ -46,9 +46,9 @@ export const projects: Project[] = [
     id: "3",
     title: "Polidex",
     description:
-      "A modern RAG admin system for managing knowledge bases that power AI chatbots.",
+      "A RAG admin system for managing chatbot knowledge bases.",
     longDescription:
-      "Build and manage knowledge bases with a sleek admin interface. Features document ingestion, semantic search, and API endpoints for integrating AI-powered Q&A into any application.",
+      "Manage knowledge bases, ingest documents, run semantic search, and expose API endpoints for Q&A features in other applications.",
     image: "/projects/polidex.png",
     gradient: "bg-gradient-to-br from-violet-600/70 via-purple-600/20 to-indigo-700/70",
     tech: ["Python", "AI", "TypeScript", "FastAPI", "React", "Vector DB", "Docker"],

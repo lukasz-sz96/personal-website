@@ -11,7 +11,7 @@ export const TerminalCard = () => {
                 </div>
                 <div className="flex items-center gap-2">
                     <span className="text-emerald-400">✓</span>
-                    <span className="text-emerald-400">Production ready</span>
+                    <span className="text-emerald-400">Build passing</span>
                     <span className="inline-block w-2 h-4 bg-emerald-400 animate-pulse" />
                 </div>
             </div>

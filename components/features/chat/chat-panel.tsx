@@ -93,7 +93,7 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
             }}
             role="dialog"
             aria-modal="true"
-            aria-label="Chat with AI Łukasz"
+            aria-label="Chat about Łukasz"
           >
             {/* Glow effect - desktop only */}
             <div

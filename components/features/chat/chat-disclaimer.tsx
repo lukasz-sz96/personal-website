@@ -47,7 +47,7 @@ export function ChatDisclaimer({ visible, onClose }: ChatDisclaimerProps) {
               />
             </svg>
           </button>
-          <span className="font-medium text-amber-300">Hey!</span> I&apos;m an AI simulation of Łukasz — trained on his experience, projects, and preferences. For sensitive topics, I&apos;ll point you to the real Łukasz. <br /> Powered by{" "}
+          <span className="font-medium text-amber-300">Heads up:</span> this chat answers from Łukasz&apos;s project and profile notes. For hiring, availability, or anything personal, contact him directly. <br /> Powered by{" "}
           <a
             href="https://github.com/lukasz-sz96/Polidex"
             target="_blank"

@@ -56,16 +56,16 @@ export function ContactInfo() {
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6">
-          <span className="text-white">Let&apos;s create</span>
+          <span className="text-white">Tell me what</span>
           <br />
           <span className="bg-gradient-to-r from-pastel-orange via-pastel-rose to-pastel-orange bg-clip-text text-transparent">
-            something amazing
+            you need built
           </span>
           <br />
-          <span className="text-white">together.</span>
+          <span className="text-white">or fixed.</span>
         </h1>
         <p className="text-gray-400 text-lg max-w-md">
-          Have a project in mind or just want to chat? I&apos;m always excited to hear about new opportunities and ideas.
+          Send a note about a web app, product UI, API work, or contract role. I&apos;ll reply with the next practical step.
         </p>
       </motion.div>
 

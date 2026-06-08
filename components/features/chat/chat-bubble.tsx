@@ -33,7 +33,7 @@ export function ChatBubble({ onClick, isOpen }: ChatBubbleProps) {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 400, damping: 25 }}
-      aria-label={isOpen ? "Close chat" : "Open chat with AI Łukasz"}
+      aria-label={isOpen ? "Close chat" : "Open chat about Łukasz"}
     >
       {/* Pulse ring animation */}
       <span
@@ -94,7 +94,7 @@ export function ChatBubble({ onClick, isOpen }: ChatBubbleProps) {
           "shadow-lg"
         )}
       >
-        Chat with AI Łukasz
+        Ask about Łukasz
         <span
           className={cn(
             "absolute left-full top-1/2 -translate-y-1/2",
